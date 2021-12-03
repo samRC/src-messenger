@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, createContext } from "react";
+import { generateFullNickname } from "./common_functions/userFunctions";
+import NewMessage from "./components/NewMessage";
 import SignUp from "./components/SignUp";
 
 const firebaseApp = initializeApp({
@@ -14,6 +16,8 @@ const firebaseApp = initializeApp({
 });
 
 const auth = getAuth(firebaseApp);
+
+const globalStateContext = createContext({});
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,25 +35,32 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>src-messenger</h1>
-      {user && nickname && (
-        <div>
-          <p>
-            Logged in as{" "}
-            <strong>
-              {nickname}#{user.uid.slice(0, 4)}
-            </strong>
-          </p>
-        </div>
-      )}
-      {!nickname && (
-        <div>
-          <SignUp setNickname={setNickname} />
-        </div>
-      )}
-    </div>
+    <globalStateContext.Provider
+      value={{
+        user,
+        nickname,
+      }}
+    >
+      <div className="App">
+        <h1>src-messenger</h1>
+        {user && nickname && (
+          <div>
+            <p>
+              Logged in as{" "}
+              <strong>{generateFullNickname(user, nickname)}</strong>
+            </p>
+            <NewMessage />
+          </div>
+        )}
+        {!nickname && (
+          <div>
+            <SignUp setNickname={setNickname} />
+          </div>
+        )}
+      </div>
+    </globalStateContext.Provider>
   );
 }
 
 export default App;
+export { globalStateContext };
