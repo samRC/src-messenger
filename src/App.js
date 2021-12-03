@@ -1,12 +1,7 @@
 import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  onAuthStateChanged,
-  signInAnonymously,
-  signOut,
-} from "firebase/auth";
-// import {getFirestore} from 'firebase/firestore';
-import { useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
+import { useEffect, useMemo, useState } from "react";
+import SignUp from "./components/SignUp";
 
 const firebaseApp = initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -19,47 +14,42 @@ const firebaseApp = initializeApp({
 });
 
 const auth = getAuth(firebaseApp);
-// const db = getFirestore(firebaseApp);
 
 function App() {
   const [user, setUser] = useState(null);
+  const [nickname, setNickname] = useState(
+    useMemo(() => {
+      return window.localStorage.getItem("nickname");
+    }, [])
+  );
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
+    signInAnonymously(auth).catch((e) => console.log(e));
   }, []);
+
   return (
     <div className="App">
       <h1>src-messenger</h1>
-      {user ? (
+      {user && nickname && (
         <div>
-          <h2>logged in as {JSON.stringify(user)}</h2>
-          <LogOut />
+          <p>
+            Logged in as{" "}
+            <strong>
+              {nickname}#{user.uid.slice(0, 4)}
+            </strong>
+          </p>
         </div>
-      ) : (
+      )}
+      {!nickname && (
         <div>
-          <h2>logged out</h2> <LogIn />
+          <SignUp setNickname={setNickname} />
         </div>
       )}
     </div>
   );
-}
-
-function LogIn() {
-  /* Creates a new anon account (Sign up) */
-  const signInAnon = () => {
-    signInAnonymously(auth);
-  };
-  return <button onClick={signInAnon}> Sign In</button>;
-}
-
-function LogOut() {
-  /* Signing out of Anon and signing back in again causes a new anon Id to be created without deleting the old one */
-  const signOutAnon = () => {
-    signOut(auth);
-  };
-  return <button onClick={signOutAnon}> Sign Out</button>;
 }
 
 export default App;
