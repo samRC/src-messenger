@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
 import { useEffect, useMemo, useState, createContext } from "react";
 import { generateFullNickname } from "./common_functions/userFunctions";
+import MessageHistory from "./components/MessageHistory";
 import NewMessage from "./components/NewMessage";
 import SignUp from "./components/SignUp";
 
@@ -49,6 +50,7 @@ function App() {
               Logged in as{" "}
               <strong>{generateFullNickname(user, nickname)}</strong>
             </p>
+            <MessageHistory />
             <NewMessage />
           </div>
         )}
