@@ -14,7 +14,7 @@ export default function MessageHistory() {
   useEffect(() => {
     const recentMessages = query(
       collection(getFirestore(), "messages"),
-      orderBy("timestamp", "asc"),
+      orderBy("timestamp", "desc"),
       limit(7)
     );
     const unsubscribe = onSnapshot(recentMessages, function (snapshot) {
@@ -24,7 +24,7 @@ export default function MessageHistory() {
         // console.log(doc.data());
         msgs.push(doc.data());
       });
-      setMessages(msgs);
+      setMessages(msgs.reverse());
     });
 
     return () => unsubscribe();
