@@ -4,21 +4,30 @@ import {
   collection,
   serverTimestamp,
 } from "firebase/firestore";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { globalStateContext } from "../App";
 import { generateFullNickname } from "../common_functions/userFunctions";
 
 export default function NewMessage() {
   const { user, nickname } = useContext(globalStateContext);
-  const sendMessage = (e) => {
+  const [message, setMessage] = useState("");
+  const sendMessage = async (e) => {
     e.preventDefault();
-    const message = document.getElementById("message").value;
-    saveMessageToDatabase(message, nickname, user);
+    // const message = document.getElementById("message").value;
+    await saveMessageToDatabase(message, nickname, user);
+    setMessage("");
   };
 
   return (
     <form onSubmit={sendMessage}>
-      <input placeholder="Enter message" required id="message" type="text" />
+      <input
+        placeholder="Enter message"
+        required
+        id="message"
+        type="text"
+        value={message}
+        onChange={({ target }) => setMessage(target.value)}
+      />
       <input type="submit" value="Send" />
     </form>
   );
