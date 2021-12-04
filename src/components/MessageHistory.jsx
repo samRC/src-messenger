@@ -7,6 +7,7 @@ import {
   query,
 } from "@firebase/firestore";
 import { useEffect, useState } from "react";
+import Message from "./Message";
 
 export default function MessageHistory() {
   const [messages, setMessages] = useState([]);
@@ -33,7 +34,7 @@ export default function MessageHistory() {
     <div>
       {messages.length > 0 &&
         messages.map((m) => {
-          return <div key={m.timestamp}>{m.message}</div>;
+          return <Message key={m.timestamp} message={m} />;
         })}
     </div>
   );
