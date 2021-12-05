@@ -5,6 +5,9 @@ import { generateFullNickname } from "./common_functions/userFunctions";
 import MessageHistory from "./components/MessageHistory";
 import NewMessage from "./components/NewMessage";
 import SignUp from "./components/SignUp";
+// styles
+import { Heading, HeadingLevel } from "baseui/heading";
+import { Paragraph1 } from "baseui/typography";
 
 const firebaseApp = initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -43,13 +46,15 @@ function App() {
       }}
     >
       <div className="App">
-        <h1>src-messenger</h1>
+        <HeadingLevel>
+          <Heading styleLevel={4}>src-messenger</Heading>
+        </HeadingLevel>
         {user && nickname && (
           <div>
-            <p>
+            <Paragraph1>
               Logged in as{" "}
               <strong>{generateFullNickname(user, nickname)}</strong>
-            </p>
+            </Paragraph1>
             <MessageHistory />
             <NewMessage />
           </div>

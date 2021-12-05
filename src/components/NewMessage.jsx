@@ -25,7 +25,7 @@ export default function NewMessage() {
   return (
     <form onSubmit={sendMessage}>
       <Grid>
-        <Cell span={4}>
+        <Cell span={10}>
           <Input
             placeholder="Enter message"
             required
