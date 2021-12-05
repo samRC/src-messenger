@@ -7,6 +7,10 @@ import {
 import { useContext, useState } from "react";
 import { globalStateContext } from "../App";
 import { generateFullNickname } from "../common_functions/userFunctions";
+// styles
+import { Input } from "baseui/input";
+import { Button } from "baseui/button";
+import { Grid, Cell } from "baseui/layout-grid";
 
 export default function NewMessage() {
   const { user, nickname } = useContext(globalStateContext);
@@ -20,15 +24,24 @@ export default function NewMessage() {
 
   return (
     <form onSubmit={sendMessage}>
-      <input
-        placeholder="Enter message"
-        required
-        id="message"
-        type="text"
-        value={message}
-        onChange={({ target }) => setMessage(target.value)}
-      />
-      <input type="submit" value="Send" />
+      <Grid>
+        <Cell span={10}>
+          <Input
+            placeholder="Enter message"
+            required
+            id="message"
+            type="text"
+            value={message}
+            onChange={({ target }) => setMessage(target.value)}
+          />
+        </Cell>
+
+        <Cell span={2}>
+          <Button type="submit" value="Send">
+            Send
+          </Button>
+        </Cell>
+      </Grid>
     </form>
   );
 }
