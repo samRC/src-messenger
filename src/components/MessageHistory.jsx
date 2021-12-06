@@ -8,6 +8,7 @@ import {
 } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import Message from "./Message";
+import { Spinner } from "baseui/spinner";
 
 export default function MessageHistory() {
   const [messages, setMessages] = useState([]);
@@ -32,6 +33,11 @@ export default function MessageHistory() {
   }, []);
   return (
     <div>
+      {messages.length === 0 && (
+        <div style={{ textAlign: "center" }}>
+          <Spinner size={96} />
+        </div>
+      )}
       {messages.length > 0 &&
         messages.map((m) => {
           return <Message key={m.timestamp} message={m} />;
