@@ -11,6 +11,7 @@ import { generateFullNickname } from "../common_functions/userFunctions";
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
 import { Grid, Cell } from "baseui/layout-grid";
+import FileUpload from "./FileUpload";
 
 export default function NewMessage() {
   const { user, nickname } = useContext(globalStateContext);
@@ -42,6 +43,7 @@ export default function NewMessage() {
           </Button>
         </Cell>
       </Grid>
+      <FileUpload />
     </form>
   );
 }
