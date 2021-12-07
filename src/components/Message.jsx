@@ -38,6 +38,15 @@ export default function Message({ message }) {
           &nbsp;
           {message.message}
         </Paragraph2>
+        {message.imageUrl && (
+          <div style={{ textAlign: "center" }}>
+            <img
+              style={{ maxHeight: "150px" }}
+              alt="uploaded"
+              src={message.imageUrl}
+            />
+          </div>
+        )}
       </Card>
     )
   );
