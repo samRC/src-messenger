@@ -20,7 +20,13 @@ ReactDOM.render(
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
         <Centered>
-          <Card overrides={{ Root: { style: { backgroundColor: "#FAFAFA" } } }}>
+          <Card
+            overrides={{
+              Root: {
+                style: { backgroundColor: "#FAFAFA", maxWidth: "600px" },
+              },
+            }}
+          >
             <App />
           </Card>
         </Centered>
