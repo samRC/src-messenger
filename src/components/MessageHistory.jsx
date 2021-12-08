@@ -32,7 +32,15 @@ export default function MessageHistory() {
     return () => unsubscribe();
   }, []);
   return (
-    <div>
+    <div
+      style={{
+        padding: "10px",
+        marginBottom: "20px",
+        overflowY: "auto",
+        overflowX: "hidden",
+        height: "50vh",
+      }}
+    >
       {messages.length === 0 && (
         <div style={{ textAlign: "center" }}>
           <Spinner size={96} />
