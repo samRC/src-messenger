@@ -13,12 +13,14 @@ export default function Message({ message }) {
         overrides={{
           Root: {
             style: {
+              padding: "1px",
               width: "100%",
               marginBottom: "10px",
               backgroundColor:
                 user.uid.localeCompare(message.userId) === 0
                   ? "#EBECF0"
                   : "#FFF",
+              wordWrap: "break-word",
             },
           },
         }}
