@@ -50,6 +50,7 @@ export default function MessageHistory() {
         messages.map((m) => {
           return <Message key={m.timestamp} message={m} />;
         })}
+      <div id="latest-message"></div>
     </div>
   );
 }

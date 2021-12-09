@@ -21,6 +21,7 @@ export default function NewMessage() {
     // const message = document.getElementById("message").value;
     await saveMessageToDatabase(message, nickname, user);
     setMessage("");
+    document.getElementById("latest-message").scrollIntoView();
   };
 
   return (
