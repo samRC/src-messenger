@@ -8,9 +8,10 @@ import { useContext, useState } from "react";
 import { globalStateContext } from "../App";
 import { generateFullNickname } from "../common_functions/userFunctions";
 // styles
-import { Input } from "baseui/input";
+import { Textarea } from "baseui/textarea";
 import { Button } from "baseui/button";
 import { Grid, Cell } from "baseui/layout-grid";
+import { ChevronRight } from "baseui/icon";
 import FileUpload from "./FileUpload";
 
 export default function NewMessage() {
@@ -27,24 +28,33 @@ export default function NewMessage() {
   return (
     <form onSubmit={sendMessage}>
       <Grid>
-        <Cell span={10}>
-          <Input
-            placeholder="Enter message"
+        <Cell span={[2, 6, 8]}>
+          <Textarea
+            placeholder="Message"
             required
             id="message"
             type="text"
             value={message}
             onChange={({ target }) => setMessage(target.value)}
+            overrides={{
+              Input: {
+                style: {
+                  height: "3em",
+                },
+              },
+            }}
           />
         </Cell>
 
-        <Cell span={2}>
+        <Cell span={[1, 1, 2]}>
           <Button type="submit" value="Send">
-            Send
+            <ChevronRight />
           </Button>
         </Cell>
+        <Cell span={[1, 1, 2]}>
+          <FileUpload />
+        </Cell>
       </Grid>
-      <FileUpload />
     </form>
   );
 }
