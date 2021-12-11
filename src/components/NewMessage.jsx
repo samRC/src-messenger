@@ -47,7 +47,7 @@ export default function NewMessage() {
         </Cell>
 
         <Cell span={[1, 1, 2]}>
-          <Button type="submit" value="Send">
+          <Button id="send-message-button" type="submit" value="Send">
             <ChevronRight />
           </Button>
         </Cell>
