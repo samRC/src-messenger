@@ -15,3 +15,4 @@ jobs:
         with:
           build: npm run build:testEnv
           start: npm run testEnv
+          wait-on: "http://localhost:3000"
