@@ -11,5 +11,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          build: REACT_APP_ENV=test npm run build
+          build: npm run build:testEnv
           start: npm run testEnv
