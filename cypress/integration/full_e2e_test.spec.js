@@ -23,4 +23,8 @@ describe("SRC Messenger full e2e test", function () {
     cy.wait(3000);
     cy.contains(/testUser1#.{4}: cy test message/i);
   });
+
+  it("End of tests", function () {
+    cy.wait(2000);
+  });
 });

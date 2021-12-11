@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "src-messenger"
+    "default": "src-messenger",
+    "testEnv": "src-messenger-test"
   }
 }

@@ -21,7 +21,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy:full": "npm run build && firebase deploy",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "testEnv": "REACT_APP_ENV=test npm start",
+    "deploy:testEnv": "firebase deploy --project testEnv --only firestore:rules --only storage:rules"
   },
   "eslintConfig": {
     "extends": [
