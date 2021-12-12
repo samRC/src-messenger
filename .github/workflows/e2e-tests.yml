@@ -16,6 +16,6 @@ jobs:
           REACT_APP_FIREBASE_TEST_CONFIG: "${{ secrets.REACT_APP_FIREBASE_TEST_CONFIG }}"
         uses: cypress-io/github-action@v2
         with:
-          browser: firefox
+          browser: chrome
           start: npm run testEnv
           wait-on: "http://localhost:3000"
