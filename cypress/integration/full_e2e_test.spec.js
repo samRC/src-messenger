@@ -8,7 +8,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 });
 
 describe("SRC Messenger full e2e test", function () {
-  beforeAll(() => {
+  before(() => {
     cy.wait(20000);
   });
 
