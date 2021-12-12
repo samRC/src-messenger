@@ -5,6 +5,7 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    container: cypress/browsers:node16.5.0-chrome94-ff93
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -15,5 +16,6 @@ jobs:
           REACT_APP_FIREBASE_TEST_CONFIG: "${{ secrets.REACT_APP_FIREBASE_TEST_CONFIG }}"
         uses: cypress-io/github-action@v2
         with:
+          browser: firefox
           start: npm run testEnv
           wait-on: "http://localhost:3000"
