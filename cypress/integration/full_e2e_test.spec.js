@@ -6,7 +6,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 describe("SRC Messenger full e2e test", function () {
   it("signs up", function () {
     // Open App and check that Sign Up form is displayed
-    cy.visit("http://localhost:3000");
+    cy.visit("/");
     cy.contains(/src-messenger/);
     cy.contains(/sign up/i);
 
