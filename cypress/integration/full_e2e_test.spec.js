@@ -1,3 +1,6 @@
+// To enable intelliSense
+/// <reference types="cypress" />
+
 Cypress.on("uncaught:exception", (err, runnable) => {
   // Prevent fail in GH Action
   return false;
