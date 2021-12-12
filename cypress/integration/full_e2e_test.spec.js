@@ -3,6 +3,7 @@
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   // Prevent fail in GH Action
+  cy.log("LOG OF Uncaught Exceptions: ", err.message);
   return false;
 });
 
