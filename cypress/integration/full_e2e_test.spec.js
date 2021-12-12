@@ -8,6 +8,10 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 });
 
 describe("SRC Messenger full e2e test", function () {
+  beforeAll(() => {
+    cy.wait(20000);
+  });
+
   beforeEach(() => {
     // Added extra wait due to failure in GH workflow
     cy.wait(5000);
