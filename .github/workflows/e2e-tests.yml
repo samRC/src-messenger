@@ -25,7 +25,6 @@ jobs:
           install: false
           start: echo "started"
           wait-on: "http://localhost:3000"
-          wait-on-timeout: 5000
       - name: Save screenshots on failure
         uses: actions/upload-artifact@v2
         if: failure()
