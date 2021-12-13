@@ -4,6 +4,7 @@ on: [push]
 
 jobs:
   cypress-run:
+    environment: firebase-config
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
