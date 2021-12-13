@@ -1,5 +1,9 @@
 # src-messenger
 
+## WORK of this branch is shifted to `ci-e2e-testing` branch
+
+## DO NOT merge this branch
+
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/samRC/src-messenger/Deploy%20to%20Firebase%20Hosting%20on%20merge?label=BUILD%2FDEPLOY&style=for-the-badge)
 
 ## Run E2E tests

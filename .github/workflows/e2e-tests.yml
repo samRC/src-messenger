@@ -22,9 +22,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          env: 'REACT_APP_FIREBASE_TEST_CONFIG="${{ secrets.REACT_APP_FIREBASE_TEST_CONFIG }}"'
           install: false
-          start: echo "started"
+          start: echo "STARTED"
           wait-on: "http://localhost:3000"
       - name: Save screenshots on failure
         uses: actions/upload-artifact@v2

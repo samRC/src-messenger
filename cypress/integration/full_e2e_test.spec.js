@@ -9,15 +9,6 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 */
 
 describe("SRC Messenger full e2e test", function () {
-  before(() => {
-    cy.wait(20000);
-  });
-
-  beforeEach(() => {
-    // Added extra wait due to failure in GH workflow
-    cy.wait(5000);
-  });
-
   it("signs up", function () {
     // Open App and check that Sign Up form is displayed
     cy.visit("/");
