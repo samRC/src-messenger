@@ -5,22 +5,20 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node16.5.0-chrome94-ff93
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install dependencies
         run: npm i
-      - name: Cypress run
+      - name: Build App
         env:
           REACT_APP_FIREBASE_TEST_CONFIG: "${{ secrets.REACT_APP_FIREBASE_TEST_CONFIG }}"
+        run: npm run build:testEnv
+      - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           install: false
-          record: false
-          browser: chrome
-          build: npm run build:testEnv
-          start: npm run testEnv
+          start: npm run start:testEnv
           wait-on: "http://localhost:3000"
           wait-on-timeout: 5000
       - name: Save screenshots on failure
