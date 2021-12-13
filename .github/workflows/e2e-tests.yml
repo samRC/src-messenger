@@ -17,9 +17,9 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          env: REACT_APP_FIREBASE_TEST_CONFIG="${{ secrets.REACT_APP_FIREBASE_TEST_CONFIG }}"
+          env: 'REACT_APP_FIREBASE_TEST_CONFIG="${{ secrets.REACT_APP_FIREBASE_TEST_CONFIG }}"'
           install: false
-          start: REACT_APP_FIREBASE_TEST_CONFIG="${{ secrets.REACT_APP_FIREBASE_TEST_CONFIG }}" npm run start:testEnv
+          start: npm run start:testEnv
           wait-on: "http://localhost:3000"
           wait-on-timeout: 5000
       - name: Save screenshots on failure
