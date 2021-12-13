@@ -22,7 +22,7 @@ export default function SignUp({ setNickname }) {
           />
         </Cell>
         <Cell span={4}>
-          <Button type="submit" value="Sign Up">
+          <Button id="signup-button" type="submit" value="Sign Up">
             Sign Up
           </Button>
         </Cell>
