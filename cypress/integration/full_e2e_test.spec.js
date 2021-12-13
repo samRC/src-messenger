@@ -1,11 +1,12 @@
 // To enable intelliSense
 /// <reference types="cypress" />
 
+/*
 Cypress.on("uncaught:exception", (err, runnable) => {
   // Prevent fail in GH Action
-  cy.log("LOG OF Uncaught Exceptions: ", err.message);
   return false;
 });
+*/
 
 describe("SRC Messenger full e2e test", function () {
   before(() => {
