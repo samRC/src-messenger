@@ -24,6 +24,8 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "testEnv": "REACT_APP_ENV=test npm start",
+    "build:testEnv": "REACT_APP_ENV=test npm run build",
+    "start:testEnv": "REACT_APP_ENV=test serve build",
     "deploy:testEnv": "firebase deploy --project testEnv --only firestore:rules --only storage:rules"
   },
   "eslintConfig": {
@@ -45,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^9.1.1"
+    "cypress": "^9.1.1",
+    "serve": "^13.0.2"
   }
 }
