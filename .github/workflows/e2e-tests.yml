@@ -14,12 +14,16 @@ jobs:
         env:
           REACT_APP_FIREBASE_TEST_CONFIG: "${{ secrets.REACT_APP_FIREBASE_TEST_CONFIG }}"
         run: npm run build:testEnv
+      - name: Start server
+        env:
+          REACT_APP_FIREBASE_TEST_CONFIG: "${{ secrets.REACT_APP_FIREBASE_TEST_CONFIG }}"
+        run: npm run start:testEnv &
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           env: 'REACT_APP_FIREBASE_TEST_CONFIG="${{ secrets.REACT_APP_FIREBASE_TEST_CONFIG }}"'
           install: false
-          start: npm run start:testEnv
+          start: echo "started"
           wait-on: "http://localhost:3000"
           wait-on-timeout: 5000
       - name: Save screenshots on failure
