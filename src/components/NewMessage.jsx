@@ -25,6 +25,12 @@ export default function NewMessage() {
     document.getElementById("latest-message").scrollIntoView();
   };
 
+  const sendMessageOnEnter = async (e) => {
+    if (e.keyCode === 13 && e.shiftKey === false) {
+      await sendMessage(e);
+    }
+  };
+
   return (
     <form onSubmit={sendMessage}>
       <Grid>
@@ -43,6 +49,7 @@ export default function NewMessage() {
                 },
               },
             }}
+            onKeyDown={sendMessageOnEnter}
           />
         </Cell>
 
