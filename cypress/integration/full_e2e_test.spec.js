@@ -27,6 +27,12 @@ describe("SRC Messenger full e2e test", function () {
     cy.contains(/testUser1#.{4}: cy test message/i);
   });
 
+  it("sends message on clicking enter key", function () {
+    cy.get("#message").type("send on enter").type("{enter}");
+    cy.wait(3000);
+    cy.contains(/testUser1#.{4}: send on enter/i);
+  });
+
   it("End of tests", function () {
     cy.wait(2000);
   });
